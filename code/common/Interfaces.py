@@ -308,6 +308,8 @@ class IEvent(metaclass=ABCMeta):
     @abstractmethod
     def onEvent(self, event:int, **kwargs):
         pass
+    
+    
         
                 
             

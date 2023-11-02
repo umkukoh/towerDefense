@@ -24,7 +24,7 @@
             ,"damage" : 20
             ,"hp" : 200
             ,"hpBarOffset" : "(-20, -60)"
-            ,"reward": 20
+            ,"reward": 300
             ,"collisionRect" :
             {
                 "left":0

@@ -6,7 +6,9 @@ from pygame_gui.core.interfaces import IContainerLikeInterface, IUIManagerInterf
 
 from pygame_gui.elements import *
 from pygame_gui.core import ObjectID, UIElement
-from common.Interfaces import IInput
+from common.Enums import GameEvent
+from common.Interfaces import IEvent, IInput
+from common.User import User
 
 from common.info import TurretInfo
 from manager.GameSetting import GameSetting
@@ -34,7 +36,7 @@ class TurretButton(UIButton):
         self.costLevel._set_visible(visible)
         super()._set_visible(visible)
 
-class TurretPanel(UIPanel, IInput):
+class TurretPanel(IInput, IEvent):
     __Instance = None
 
     def __init__(self, turretInfoList:list[TurretInfo]):
@@ -51,12 +53,13 @@ class TurretPanel(UIPanel, IInput):
         turretPanel_Height = GameSetting.getInt("UI", "TurretPanel_Height")
         rect = pygame.Rect(turretPanel_X, turretPanel_Y, turretPanel_Width, turretPanel_Height)
 
-        self.uiPanel = UIPanel(rect, 0, manager, element_id="panel",\
+        self.uiPanel = UIPanel(rect, 0, manager, element_id="panel",visible=0,\
                             object_id= ObjectID(class_id="@BasePanel", object_id="#bottomPanel"))
         self.selectedButton:TurretButton = None
 
         
         IInput.__init__(self, {pygame_gui.UI_BUTTON_PRESSED, pygame.MOUSEBUTTONUP})
+        IEvent.__init__(self, {GameEvent.StageInitComplete, GameEvent.UpdateStage})
         buttonSize = GameSetting.getInt("UI", "TurretButtonSize")
         buttonRect = pygame.Rect(0, 0, buttonSize, buttonSize)
         self.buttonList:list[TurretButton] = []
@@ -64,8 +67,6 @@ class TurretPanel(UIPanel, IInput):
             button = TurretButton(buttonRect, manager, self.uiPanel, element)
             self.buttonList.append(button)
             buttonRect.x += buttonSize
-
-        self.setVisible(True)
 
     def setVisible(self, visible:bool):
         self.uiPanel._set_visible(int(visible))
@@ -76,7 +77,7 @@ class TurretPanel(UIPanel, IInput):
         return TurretPanel.__Instance.selectedButton
     
     def UpdateButton (self):
-        curGold = 1000
+        curGold = User.getCurGold()
         for element in self.buttonList:
             active = element.getCost() <= curGold
             if active:
@@ -90,3 +91,8 @@ class TurretPanel(UIPanel, IInput):
                 if event.ui_element in self.buttonList:
                     self.selectedButton = event.ui_element
                     UIManager.getInstance().setSelectedTurret(self.selectedButton.getTurretInfo())
+    
+    def onEvent(self, event:int, **kwargs):
+        match(event):
+            case GameEvent.StageInitComplete | GameEvent.UpdateStage:
+                self.UpdateButton()

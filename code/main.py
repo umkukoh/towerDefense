@@ -1,5 +1,7 @@
 import pygame
-from common.Interfaces import ICollision, IEntity, IInput, IMove, IPostRender, IRender, IUpdate
+from common.Enums import GameEvent, GameStateType
+from common.Interfaces import ICollision, IEntity, IEvent, IInput, IMove, IPostRender, IRender, IUpdate
+from common.User import User
 from manager.BulletManager import BulletManager
 from manager.Debugger import Debugger
 from manager.EnemyManger import EnemyManager
@@ -22,7 +24,7 @@ def main():
     TurretManager()
     BulletManager()
     EnemyManager()
-    
+    User()
 
 
     screenWidth = GameSetting.getInt("Screen", "Width")
@@ -41,8 +43,9 @@ def main():
     testManager = EnemyManager.getInstance()
     startPos = StageManager.getInstance ().getCurrentStage().getStageInfo().startPos
     startPos = TileManager.getScreenPosByTilePos(startPos)
-    isCreated = testManager.createEnemyEntity("medium", pygame.Vector2(startPos))
- 
+    
+    IEvent.sendEvent(GameEvent.ChangeState, nextState=GameStateType.Stage)
+    IEvent.sendEvent(GameEvent.StageInitComplete, stage=StageManager.getInstance().getCurrentStage())
         
 
     running = True

@@ -1,5 +1,6 @@
 import pygame
-from common.Enums import EntityType, PriorityType, RenderCenterType
+from common.Enums import EntityType, GameEvent, PriorityType, RenderCenterType
+from common.Interfaces import IEvent
 from common.info import EnemyInfo
 from component.CollisionComponent import CollisionComponent
 from component.HealthComponent import HealthComponent
@@ -62,6 +63,7 @@ class EnemyEntity(AniEntity, MoveComponent, PathFindComponent, CollisionComponen
             if HealthComponent.getDamage(self, damageInfo) == False:
                 from manager.EnemyManger import EnemyManager
                 EnemyManager.getInstance().deleteEnemyEntity(self)
+                IEvent.sendEvent(GameEvent.EnemyDie, reward=self.enemyInfo.reward)
     
     def setAngle(self, angle):
         super().setAngle(angle)

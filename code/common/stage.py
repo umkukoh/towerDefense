@@ -1,4 +1,5 @@
 from common.info import StageInfo, WaveInfo
+from manager.TileManager import TileManager
 
 
 class Stage():
@@ -27,14 +28,16 @@ class Stage():
     def IsIntimeBtwCurAndLast(element:WaveInfo, curDelta, lastDelta) -> bool:
         return lastDelta < element.time <= curDelta
     
-    # def update(self, delta) -> None:
-    #     self.curDeltaTime += delta
+    def update(self, delta) -> None:
+        self.curDeltaTime += delta
 
-    #     waveData = self.stageInfo.getWaveInfoData(self.curWaveIndex)
-    #     if waveData != None:
-    #         enemyList = waveData.getEnemyList()
-    #         shouldMakeEnemyData = [element for element in enemylist\
-    #                                         if Stage.IsInTimeBtwCurAndLast(element, self.curDeltaTime, self.lastWaveDeltaTime)]
-    #         startPos = TileManager.getScreenPosBytilePos(self.stageInfo.startPos)
+        waveData = self.stageInfo.getWaveInfoData(self.curWaveIndex)
+        if waveData != None:
+            enemyList = waveData.getEnemyList()
+            shouldMakeEnemyData = [element for element in enemyList\
+                                            if Stage.IsInTimeBtwCurAndLast(element, self.curDeltaTime, self.lastWaveDeltaTime)]
+            startPos = TileManager.getScreenPosBytilePos(self.stageInfo.startPos)
+            
+            
 
         

@@ -2,6 +2,7 @@ import pygame
 import pygame_gui
 from common.Enums import EntityType, GameEvent, GameStateType, PriorityType, TileType
 from common.Interfaces import IEvent, IInput
+from common.User import User
 from common.info import TurretInfo
 from entity.RenderEntity import RenderEntity
 from entity.TurretEntity import TurretEntity
@@ -119,7 +120,7 @@ class UIManager(IInput, IEvent):
                         if turret != None:
                             tile.setTileType(TileType.built)
                             self.setSelectedTurretEntity(turret)
-                            # User.addGold(-self.selectedTurretInfo.cost)
+                            User.addGold(-self.selectedTurretInfo.cost)
 
                         elif self.selectedTurretInfo == None and tile.getTileType() == TileType.built:
                             turret = TurretManager.getInstance().getTurretEntity(tilePos)
@@ -131,7 +132,11 @@ class UIManager(IInput, IEvent):
 
                 self.setSelectedTurret(None)
                         
-                
+    def onEvent(self, event:int, **kwargs):
+        match(event):
+            case GameEvent.ChangeState:
+                nextState = kwargs.get("nextState")
+                self.setGameStatePanel(nextState)             
                 
 
         

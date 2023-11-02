@@ -4,7 +4,7 @@
         "id": 0
         ,"startPos": "(-1,6)"
         ,"endPos": "(16,6)"
-        ,"gold": 1050
+        ,"gold": 800
         ,"hp": 100
         ,"turretSlots":
         [
@@ -65,7 +65,7 @@
                 ]
             }
             ,{
-                "startTime":10000
+                "startTime":1200
                 ,"endTime":40000
                 ,"enemyList":
                 [

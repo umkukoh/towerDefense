@@ -2,6 +2,7 @@ import pygame
 from pygame_gui.elements import *
 from common.Enums import GameEvent
 from common.Interfaces import IEvent
+from common.User import User
 from common.stage import Stage
 from manager.GameSetting import GameSetting
 from manager.ResourceManager import ResourceManager
@@ -15,7 +16,7 @@ class MainPanel(IEvent):
         IEvent.__init__(self, {GameEvent.StageInitComplete, GameEvent.UpdateStage})
         
         from manager.UIManager import UIManager
-        manager = UIManager.getInstance().getInstance().getGUIManager
+        manager = UIManager.getInstance().getGUIManager()
         
         mainPanel_X = GameSetting.getInt("UI", "MainPanel_X")
         mainPanel_Y = GameSetting.getInt("UI", "MainPanel_Y")
@@ -69,7 +70,7 @@ class MainPanel(IEvent):
         self.curStageHP = stage.curHP
         self.updateStageNum(stageInfo.getName())
         self.updateWaveNum(stage)
-        self.updateGold(100)
+        self.updateGold(User.getCurGold())
         
     def updateWaveNum(self, stage:Stage):
         self.waveNumLabel.set_text(f"{stage.curWaveIndex + 1} / {len(stage.stageInfo.waves)} Wave")
@@ -84,10 +85,10 @@ class MainPanel(IEvent):
     def onEvent(self, event:int, **kwargs):
         match(event):
             case GameEvent.StageInitComplete | GameEvent.UpdateStage:
-                curstage = kwargs.get("stage")
+                curStage = kwargs.get("stage")
                 if curStage == None:
                     curStage = StageManager.getInstance().getCurrentStage()
-                self.setUpStageInfo(curstage)    
+                self.setUpStageInfo(curStage)    
 
         
         
