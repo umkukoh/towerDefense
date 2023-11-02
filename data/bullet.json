@@ -1,0 +1,38 @@
+{
+    "bulletList":
+    [
+        {
+            "id" : "bullet_0"
+            ,"resource": "bullet_0"
+            ,"speed" : 0.5
+            ,"maxDamage" : 15
+            ,"minDamage" : 10
+            ,"criticalPercent" : 20
+            ,"criticalDamageRate": 1.5
+            ,"collisionRect":
+            {
+                "left":0
+                ,"top":0
+                ,"width":4
+                ,"height":8
+            }
+        }
+
+        ,{
+            "id" : "bullet_1"
+            ,"resource": "bullet_1"
+            ,"speed" : 0.5
+            ,"maxDamage" : 15
+            ,"minDamage" : 10
+            ,"criticalPercent" : 20
+            ,"criticalDamageRate": 1.5
+            ,"collisionRect":
+            {
+                "left":0
+                ,"top":0
+                ,"width":4
+                ,"height":8
+            }
+        }
+    ]
+}

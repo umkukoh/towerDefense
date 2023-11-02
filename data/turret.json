@@ -1,0 +1,33 @@
+{
+    "turretList":
+    [
+        {
+            "id"        : "single_Artillery_0",
+            "resource"  : "single_Artillery",
+            "level"     : 0,
+            "cost"      : 100,
+            "bulletID"  : "bullet_0",
+            "reloadTime": 1000,
+            "rangeRate" : 3,
+            "firePosList":
+            [
+                "(0,-28)"
+            ]
+        },
+        
+        {
+            "id"        : "dual_Artillery_0",
+            "resource"  : "dual_Artillery",
+            "level"     : 0,
+            "cost"      : 250,
+            "bulletID"  : "bullet_1",
+            "reloadTime": 3000,
+            "rangeRate" : 5,
+            "firePosList":
+            [
+                "(-6, -28)",
+                "(6,-28)"
+            ]
+        }
+    ]
+}

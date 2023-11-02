@@ -1,0 +1,53 @@
+{
+    "enemyList":
+    [
+        {
+            "enemyType": "small"
+            ,"scale" : 1.0
+            ,"speed" : 0.1
+            ,"damage" : 10
+            ,"hp" : 100
+            ,"hpBarOffset" : "(-20, -50)"
+            ,"reward": 5
+            ,"collisionRect" :
+            {
+                "left":0
+                ,"top":0
+                ,"width":30
+                ,"height":50
+            }
+        }
+        , {
+            "enemyType": "medium"
+            ,"scale" : 1.5
+            ,"speed" : 0.05
+            ,"damage" : 20
+            ,"hp" : 200
+            ,"hpBarOffset" : "(-20, -60)"
+            ,"reward": 20
+            ,"collisionRect" :
+            {
+                "left":0
+                ,"top":0
+                ,"width":30
+                ,"height":50
+            }
+        }
+        , {
+            "enemyType": "big"
+            ,"scale" : 2.0
+            ,"speed" : 0.03
+            ,"damage" : 50
+            ,"hp" : 500
+            ,"hpBarOffset" : "(-20, -100)"
+            ,"reward": 100
+            ,"collisionRect" :
+            {
+                "left":0
+                ,"top":0
+                ,"width":60
+                ,"height":100
+            }
+        }
+    ]
+}

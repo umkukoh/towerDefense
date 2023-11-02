@@ -1,0 +1,266 @@
+{
+    "defaults":
+    {
+        "colours":
+        {
+            "normal_bg":"#45494e",
+            "hovered_bg":"#35393e",
+            "disabled_bg":"#25292e",
+            "selected_bg":"#193754",
+            "dark_bg":"#15191e",
+            "normal_text":"#c5cbd8",
+            "hovered_text":"#FFFFFF",
+            "selected_text":"#FFFFFF",
+            "disabled_text":"#6d736f",
+            "link_text": "#0000EE",
+            "link_hover": "#2020FF",
+            "link_selected": "#551A8B",
+            "text_shadow": "#777777",
+            "normal_border": "#DDDDDD",
+            "hovered_border": "#B0B0B0",
+            "disabled_border": "#808080",
+            "selected_border": "#8080B0",
+            "active_border": "#8080B0",
+            "filled_bar":"#f4251b",
+            "unfilled_bar":"#CCCCCC"
+        }
+    },
+
+    "label":
+    {
+        "colours":
+        {
+            "normal_text": "#FFFFFF",
+            "text_shadow": "#222222"
+        },
+        "font":
+        {
+            "name": "montserrat",
+            "size": "12",
+            "bold": "0",
+            "italic": "0",
+            "regular_path" : "resource/font/Montserrat-Regular.ttf",
+            "bold_path" : "resource/font/Montserrat-Bold.ttf",
+            "italic_path" : "resource/font/Montserrat-Italic.ttf",
+            "bold_italic_path" : "resource/font/Montserrat-BoldItalic.ttf"
+        },
+        "misc":
+        {
+            "text_shadow": "1",
+            "text_shadow_size": "1",
+            "text_shadow_offset": "0,0"
+        }
+    },
+
+    "#label_24":
+    { 
+        "font":
+        {
+            "name": "montserrat",
+            "size": "30",
+            "bold": "1",
+            "italic": "0"
+        }
+    },
+
+    "#label_purple_24":
+    { 
+        "colours":
+        {
+            "normal_text": "#8B00FF",
+            "text_shadow": "#8B00FF"
+        },
+
+        "font":
+        {
+            "name": "montserrat",
+            "size": "30",
+            "bold": "1",
+            "italic": "0"
+        }
+
+        ,"misc":
+        {
+            "text_shadow": "0"
+            ,"text_shadow_size": "0"
+            ,"text_shadow_offset": "0,0"
+        }
+    },
+
+    "#label_red_16":
+    { 
+        "colours":
+        {
+            "normal_text": "#FF2222",
+            "text_shadow": "#FFFFFF"
+        },
+
+        "font":
+        {
+            "name": "montserrat",
+            "size": "16",
+            "bold": "1",
+            "italic": "0"
+        }
+
+        ,"misc":
+        {
+            "text_shadow": "0"
+            ,"text_shadow_size": "0"
+            ,"text_shadow_offset": "0,0"
+        }
+    },
+
+    "#label_48":
+    { 
+        "font":
+        {
+            "name": "montserrat"
+            ,"size": "48"
+            ,"bold": "1"
+            ,"italic": "0"
+        }
+    },
+
+    "button":
+    {
+        "colours":
+        {
+            "normal_bg":"#ffffff",
+            "hovered_bg":"#35393e",
+            "disabled_bg":"#25292e",
+            "selected_bg":"#193754",
+            "active_bg":"#193754",
+            "dark_bg":"#15191e",
+            "normal_text":"#c5cbd8",
+            "hovered_text":"#FFFFFF",
+            "selected_text":"#FFFFFF",
+            "disabled_text":"#6d736f",
+            "active_text":"#FFFFFF",
+            "normal_border": "#DDDDDD",
+            "hovered_border": "#B0B0B0",
+            "disabled_border": "#808080",
+            "selected_border": "#8080B0",
+            "active_border": "#8080B0"
+        },
+
+        "misc":
+        {
+            "tool_tip_delay": "1.5",
+            "border_width": "1",
+            "shadow_width": "5",
+            "shape": "rounded_rectangle"
+        }
+    },
+
+    "@item_buttons":
+    {
+        "misc":
+        {
+            "shadow_width": "5",
+            "shape": "rounded_rectangle"
+        }
+   },
+
+   "#single_Artillery_0":
+   {        
+        "images":
+        {
+            "normal_image": {
+                "path": "resource/turret/single_Artillery_0.png",
+                "sub_surface_rect": "0,0,64,64"
+            }
+        }
+   },
+
+   "#dual_Artillery_0":
+   {        
+        "images":
+        {
+            "normal_image": {
+                "path": "resource/turret/dual_Artillery_0.png",
+                "sub_surface_rect": "0,0,64,64"
+            }
+        }
+   },
+
+   "#flamethrower_0":
+   {        
+        "images":
+        {
+            "normal_image": {
+                "path": "resource/turret/flamethrower_0.png",
+                "sub_surface_rect": "0,0,64,64"
+            }
+        }
+   },
+
+    "panel":
+    {
+        "colours":
+        {
+            "dark_bg":"#aaaaaa",
+            "normal_border": "#777777"
+        },
+
+        "misc":
+        {
+            "shape": "rounded_rectangle",
+            "shape_corner_radius": "3",
+            "border_width": "2",
+            "shadow_width": "3"
+        }
+    },
+
+    "@BasePanel":
+    {
+        "misc":
+        {
+            "shape": "rectangle",
+            "border_width": "0",
+            "shadow_width": "0"
+        }
+    },
+
+    "#bottomPanel":
+    {
+        "colours":
+        {
+            "dark_bg":"#658044",
+            "normal_border": "#777777"
+        }
+    },
+
+    "status_bar":
+    {
+        "colours":
+        {
+            "normal_border": "#AAAAAA",
+            "filled_bar": "#ff1111",
+            "unfilled_bar": "#CCCCCC"
+        },
+        "misc":
+        {
+            "shape" : "rectangle",
+            "follow_sprite_offset": "-5, 32",
+            "border_width": "1",
+            "shadow_width": "1"
+        }
+    },
+
+    "@Heath_bar":
+    {
+        "misc":
+        {
+            "border_width": "1"
+        }
+    },
+
+    "#enemy_bar":
+    {
+        "colours":
+        {
+            "filled_bar": "#ff1111"
+        }
+    }
+}
