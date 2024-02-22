@@ -21,7 +21,16 @@ class TurretManager():
         return TurretManager.__instance
     
     def getTurretInfoList() -> list[TurretInfo]:
-        return list(TurretManager.__instance.turretInfoDict.values())
+        
+        # 터렛 레벨이 0인 터렛인포만 리스트에 담는다.
+        
+        turretInfoList = []
+        for turretInfo in TurretManager.getInstance().turretInfoDict.values():
+            if turretInfo.level is 0:
+                turretInfoList.append(turretInfo)
+             
+        return turretInfoList
+        # return list(TurretManager.__instance.turretInfoDict.values())
     
     def getTurretInfo(self, turretID:str) -> TurretInfo:
         return self.turretInfoDict.get(turretID)
@@ -52,6 +61,13 @@ class TurretManager():
             return
         
         del self.turretDict[key]
+        
+    def deleteAllTurretEntity(self):
+        for turret in self.turretDict.values():
+            turret.prepareDelete()
+            del turret
+        
+        self.turretDict.clear()
         
     def __loadTurretInfo(self, jsonPath) -> dict[str, TurretInfo]:
         turretDict = {}

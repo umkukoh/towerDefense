@@ -11,6 +11,7 @@ from manager.TileManager import TileManager
 from manager.TurretManager import TurretManager
 
 
+
 class UIManager(IInput, IEvent):
     __instance = None
     __rangeUnitSize = None
@@ -39,11 +40,16 @@ class UIManager(IInput, IEvent):
         
         self.rangeEntity = RenderEntity(f"RangeEntity", pygame.Vector2(), EntityType.Range, "./resource/range.png", PriorityType.Third, active=False)
 
+        from ui.Panel.StagePanel import StagePanel
         from ui.Panel.TurretPanel import TurretPanel
         from ui.Panel.MainPanel import MainPanel
+        from ui.Panel.EndPanel import EndPanel
         
+        
+        self.stagePanel = StagePanel()
         self.mainPanel = MainPanel()
         self.turretPanel = TurretPanel(TurretManager.getTurretInfoList())
+        self.endPanel = EndPanel()
 
 
     def getInstance():
@@ -58,10 +64,10 @@ class UIManager(IInput, IEvent):
     
     def setSelectedTurretEntity(self, turret:TurretEntity):
         self.selectedTurretEntity = turret
-        # if turret != None:
-        #     self.setRangeEntity(turret.rangeRate, turret.getPos() ,True)
-        # else:
-        #     self.setRangeEntity(1.0, pygame.Vector2(0, 0), False)
+        if turret != None:
+            self.setRangeEntity(turret.rangeRate, turret.getPos() ,True)
+        else:
+            self.setRangeEntity(1.0, pygame.Vector2(0, 0), False)
 
     def setRangeEntity(self, rate:float, pos:pygame.Vector2, active:bool):
         range = UIManager.__rangeUnitSize * rate
@@ -86,8 +92,9 @@ class UIManager(IInput, IEvent):
             self.selectedTurret.setResource(turretInfo.getSpriteResource())
             
     def setGameStatePanel(self, gameState:GameStateType):
-        self.mainPanel.setVisible(GameStateType.Stage == gameState)
-        self.turretPanel.setVisible(GameStateType.Stage == gameState)
+        self.stagePanel.setVisible(GameStateType.StageList == gameState)
+        self.mainPanel.setVisible(GameStateType.StagePlay == gameState)
+        self.turretPanel.setVisible(GameStateType.StagePlay == gameState)
     
     
     def onInputEvent(self, event:pygame.event.Event):
@@ -110,6 +117,10 @@ class UIManager(IInput, IEvent):
                     self.__setSelector(isInTileArea, pos)
 
             case pygame.MOUSEBUTTONUP:
+                from manager.GameStateMachine import GameStateMachine
+                if GameStateMachine.getInstance().getCurStateKey() != GameStateType.StagePlay:
+                    return
+                
                 mousePos = pygame.mouse.get_pos()
                 tilePos = TileManager.getTilePosByScreenPos(mousePos)
                 tile = TileManager.getTileByScreenPos(mousePos)
@@ -122,13 +133,13 @@ class UIManager(IInput, IEvent):
                             self.setSelectedTurretEntity(turret)
                             User.addGold(-self.selectedTurretInfo.cost)
 
-                        elif self.selectedTurretInfo == None and tile.getTileType() == TileType.built:
-                            turret = TurretManager.getInstance().getTurretEntity(tilePos)
-                            self.setSelectedTurretEntity(turret)
-                        else:
-                            self.setSelectedTurretEntity(None)
+                    elif self.selectedTurretInfo == None and tile.getTileType() == TileType.built:
+                        turret = TurretManager.getInstance().getTurretEntity(tilePos)
+                        self.setSelectedTurretEntity(turret)
+                    else:
+                        self.setSelectedTurretEntity(None)
                 else:
-                    self.setSelectedTurretEntity(None)
+                        self.setSelectedTurretEntity(None)
 
                 self.setSelectedTurret(None)
                         

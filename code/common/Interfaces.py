@@ -309,6 +309,26 @@ class IEvent(metaclass=ABCMeta):
     def onEvent(self, event:int, **kwargs):
         pass
     
+class IState(metaclass = ABCMeta):
+    def __init__(self, key) -> None:
+        self.key = key 
+        
+    @abstractmethod
+    def onEnter(self):
+        pass
+    
+    @abstractmethod
+    def onUpdate(self, delta):
+        pass
+    
+    @abstractmethod
+    def onExit(self):
+        pass
+    
+    def getKey(self):
+        return self.key
+        
+    
     
         
                 

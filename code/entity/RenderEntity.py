@@ -17,6 +17,7 @@ class RenderEntity(BaseEntity, RenderComponent):
         RenderComponent.rotate(self, angle)
 
     def setScale(self, scale: pygame.Vector2):
+        BaseEntity.setScale(self, scale)
         RenderComponent.updateResource(self)
 
     def postRender(self, delta) -> None:

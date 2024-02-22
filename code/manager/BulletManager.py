@@ -43,6 +43,14 @@ class BulletManager(IUpdate):
         self.bulletList.remove(bulletEntity)
         bulletEntity.prepareDelete()
         del bulletEntity
+        
+    def deleteAllBulletEntity(self):
+        for bullet in self.bulletList:
+            bullet.prepareDelete()
+            del bullet
+        
+        self.bulletList.clear()
+        
 
     def __loadBulletInfo(self, jsonPath) -> dict[str, BulletInfo]:
         bulletDict = {}

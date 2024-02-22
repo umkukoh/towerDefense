@@ -1,7 +1,5 @@
 from common.Enums import GameEvent
 from common.Interfaces import IEvent
-from common.stage import Stage
-
 
 class User(IEvent):
     __instance = None
@@ -24,6 +22,7 @@ class User(IEvent):
     def onEvent(self, event: int, **kwargs):
         match(event):
             case GameEvent.StageInitComplete:
+                from common.stage import Stage
                 stage:Stage = kwargs.get("stage")
                 if stage != None:
                     User.__instance.curGold = stage.stageInfo.gold

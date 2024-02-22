@@ -1,39 +1,39 @@
-import pygame
-import pygame_gui
+def add(self, a, b):
+    return a+b
 
+class 학생():
+    name = "김태은"
+    age = "16"
+    
+    def __init__(self) -> None:
+        self.name = "김태은"
+        self.age = "16"
+    
+    # member method
+    def 이름얻기(self):
+        return self.name
+    
+    def getOld(self):
+        self.age += 1
+        
+    
+    def 이름얻기():
+        얻기 = str(학생.name)
+        return 얻기
+    
+    def 나이증가(age):
+        증가 = str(age) + "1"
+        return 증가
+    
+    
+    
+    
+# 학생1 = 학생()
+# 학생2 = 학생()
+#나이증가(학생1)
 
-pygame.init()
+print(학생1.name)
+print(학생2.name)
 
-pygame.display.set_caption('Quick Start')
-window_surface = pygame.display.set_mode((800, 600))
-
-background = pygame.Surface((800, 600))
-background.fill(pygame.Color('#000000'))
-
-manager = pygame_gui.UIManager((800, 600), 'theme.json')
-
-hello_button = pygame_gui.elements.UIButton(relative_rect=pygame.Rect((350, 275), (100, 50)),
-                                            text='Say Hello',
-                                            manager=manager)
-
-clock = pygame.time.Clock()
-is_running = True
-
-while is_running:
-    time_delta = clock.tick(60)/1000.0
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            is_running = False
-
-        if event.type == pygame_gui.UI_BUTTON_PRESSED:
-            if event.ui_element == hello_button:
-                print('Hello World!')
-
-        manager.process_events(event)
-
-    manager.update(time_delta)
-
-    window_surface.blit(background, (0, 0))
-    manager.draw_ui(window_surface)
-
-    pygame.display.update()
+이름1 = 학생1.이름얻기()
+print(이름1)

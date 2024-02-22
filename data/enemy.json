@@ -5,10 +5,10 @@
             "enemyType": "small"
             ,"scale" : 1.0
             ,"speed" : 0.1
-            ,"damage" : 10
+            ,"damage" : 8000
             ,"hp" : 100
             ,"hpBarOffset" : "(-20, -50)"
-            ,"reward": 5
+            ,"reward": 100
             ,"collisionRect" :
             {
                 "left":0
@@ -24,7 +24,7 @@
             ,"damage" : 20
             ,"hp" : 200
             ,"hpBarOffset" : "(-20, -60)"
-            ,"reward": 300
+            ,"reward": 150
             ,"collisionRect" :
             {
                 "left":0
@@ -40,7 +40,7 @@
             ,"damage" : 50
             ,"hp" : 500
             ,"hpBarOffset" : "(-20, -100)"
-            ,"reward": 100
+            ,"reward": 250
             ,"collisionRect" :
             {
                 "left":0

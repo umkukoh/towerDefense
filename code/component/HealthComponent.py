@@ -4,13 +4,14 @@ from common.Interfaces import IEntity, IUpdate
 from pygame_gui.elements import *
 
 from manager.Debugger import Debugger
+from manager.GameSetting import GameSetting
 
 
 
 class DamageText(IUpdate):
     __widthUnit = 200
     __defaultHeight = 300
-    __speed = 0.05
+    __speed = None
     __maxMoveY = 30
     __normalLabel = "#label_red_16"
     __criticalLabel = "#label_purple_24"
@@ -23,6 +24,9 @@ class DamageText(IUpdate):
         rect = pygame.Rect(0, 0, width, DamageText.__defaultHeight)
         self.startY = pos[1]
         rect.center = pos
+        
+        if DamageText.__speed == None:
+            DamageText.__speed = GameSetting.getFloat("UI", "DamageText_Speed")
         
         objecctIDForLabel = DamageText.__normalLabel
         if damageInfo[1]:

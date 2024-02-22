@@ -27,6 +27,12 @@ class TileManager():
 
         self.tileList = []
         self.curDirectionMap:dict[tuple[int, int], DirectionType] = {}
+        
+    def getInstance():
+        return TileManager.__instance
+    
+    def deleteAllTiles(self):
+        self.__clearTiles()
 
     def __clearTiles (self):
         for tile in self.tileList:

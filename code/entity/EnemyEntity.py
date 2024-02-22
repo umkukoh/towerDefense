@@ -88,6 +88,7 @@ class EnemyEntity(AniEntity, MoveComponent, PathFindComponent, CollisionComponen
                 super().setDir(dir)
                 RenderComponent.setFlip(self, (dir.x < 0))
         else:
-            super ().setDir(pygame.Vector2(0, 0))
+            super().setDir(pygame.Vector2(0, 0))
             from manager.EnemyManger import EnemyManager
             EnemyManager.getInstance().deleteEnemyEntity(self)
+            IEvent.sendEvent(GameEvent.EnemyExit, damage=self.enemyInfo.damage)

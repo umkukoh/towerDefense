@@ -34,6 +34,8 @@ class TurretEntity(RenderEntity, RangeComponent, FireComponent):
         self.selected = False
 
     def prepareDelete(self):
+        RangeComponent.prepareDelete(self)
+        FireComponent.prepareDelete(self)
         RenderEntity.prepareDelete(self)
 
 

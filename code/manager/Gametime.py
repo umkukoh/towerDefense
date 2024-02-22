@@ -39,7 +39,7 @@ class GameTime(IInput):
 
     def onInputEvent(self, event: pygame.event.Event) :
         match event.key:
-            case pygame.K_9:
+            case pygame.K_0:
                 if event.type == pygame.KEYUP:
                     self.curTimeRate +=self.adjustTimeRate
                     if self.curTimeRate > self.maxTimeRate:
@@ -47,7 +47,7 @@ class GameTime(IInput):
 
                     Debugger.print(f"curtimeRate : {self.curTimeRate}")
             
-            case pygame.K_0:
+            case pygame.K_9:
                 if event.type == pygame.KEYUP:
                     self.curTimeRate -= self.adjustTimeRate
                     if self.curTimeRate < self.adjustTimeRate:

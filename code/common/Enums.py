@@ -86,9 +86,10 @@ class GameStateType(ExtendedEnum):
     AppInit = 0
     StageList = 1
     StageLoading = 2
-    Stage = 3
+    StagePlay = 3
     StageClear = 4
-    StageEnd = 5
+    GameOver = 5
+    StageUnloading = 6
     
     Invalid = 7
     

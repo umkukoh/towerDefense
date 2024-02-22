@@ -219,6 +219,7 @@
             "shape": "rectangle",
             "border_width": "0",
             "shadow_width": "0"
+
         }
     },
 
@@ -228,6 +229,15 @@
         {
             "dark_bg":"#658044",
             "normal_border": "#777777"
+        }
+    },
+
+    "#stageListPanel":
+    {
+        "colours":
+        {
+            "dark_bg":"#aaaaaa",
+            "normal_border":"#777777"
         }
     },
 

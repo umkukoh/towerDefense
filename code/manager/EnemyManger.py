@@ -1,13 +1,15 @@
 import json
 
 import pygame
-from common.Interfaces import IUpdate
+from common.Enums import GameEvent
+from common.Interfaces import IEvent, IUpdate
 from common.info import EnemyInfo
 from entity.EnemyEntity import EnemyEntity
 from manager.Debugger import Debugger
 
 
 class EnemyManager(IUpdate):
+    # class EnemyManager(IUpdate, IEvent):
     __instance = None
 
     def __init__(self) -> None:
@@ -21,6 +23,7 @@ class EnemyManager(IUpdate):
         self.pendingList:list[EnemyEntity] = []
 
         IUpdate.__init__(self)
+        # IEvent.__init__(self, {GameEvent.GameOver})
 
     def getInstance():
         return EnemyManager.__instance
@@ -60,6 +63,10 @@ class EnemyManager(IUpdate):
         
         return True
     
+    def deleteAllEnemyEntity(self):
+        for element in self.enemyList:
+            self.deleteEnemyEntity(element)
+            
     def getEnemyList(self) -> list[EnemyEntity]:
         return self.enemyList
     
@@ -70,4 +77,10 @@ class EnemyManager(IUpdate):
             del enemyEntity
         
         self.pendingList.clear()
+    
+    # def onEvent(self, event: int, **kwargs):
+    #     match(event):             
+    #         case GameEvent.GameOver:
+    #             for element in self.enemyList:
+    #                 self.deleteEnemyEntity(element)
         

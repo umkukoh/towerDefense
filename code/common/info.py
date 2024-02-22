@@ -46,9 +46,10 @@ class WaveInfo():
         return self.endTime
 
 class StageInfo():
-    def __init__(self, id:int, startPos:str, endPos:str, gold:int, hp:int, \
+    def __init__(self, id:int, name:str, startPos:str, endPos:str, gold:int, hp:int, \
                 turretSlots:list[str], paths:list[str], waves:list[dict]) -> None:
         self.id = id
+        self.name = name
         self.startPos = eval(startPos)
         self.endPos = eval(endPos)
         self.gold = gold
@@ -76,7 +77,7 @@ class StageInfo():
             self.mapData.append(row)
     
     def getName(self) -> str:
-        return f"Stage {self.id}"
+        return self.name
 
     def getEndPos(self) -> tuple[int, int]:
         return self.endPos

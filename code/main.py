@@ -6,6 +6,7 @@ from manager.BulletManager import BulletManager
 from manager.Debugger import Debugger
 from manager.EnemyManger import EnemyManager
 from manager.GameSetting import GameSetting
+from manager.GameStateMachine import GameStateMachine
 from manager.Gametime import GameTime
 from manager.ResourceManager import ResourceManager
 from manager.StageManager import StageManager
@@ -36,16 +37,17 @@ def main():
 
     UIManager(screenSize)
     ui_manager = UIManager.getInstance().getGUIManager()
+    GameStateMachine()
     
-    if StageManager.getInstance().loadStage(0) == False:
-        Debugger.print(f"Can't load Stage with stageIndex({0})")
+    # if StageManager.getInstance().loadStage(0) == False:
+    #     Debugger.print(f"Can't load Stage with stageIndex({0})")
 
-    testManager = EnemyManager.getInstance()
-    startPos = StageManager.getInstance ().getCurrentStage().getStageInfo().startPos
-    startPos = TileManager.getScreenPosByTilePos(startPos)
+    # testManager = EnemyManager.getInstance()
+    # startPos = StageManager.getInstance ().getCurrentStage().getStageInfo().startPos
+    # startPos = TileManager.getScreenPosByTilePos(startPos)
     
-    IEvent.sendEvent(GameEvent.ChangeState, nextState=GameStateType.Stage)
-    IEvent.sendEvent(GameEvent.StageInitComplete, stage=StageManager.getInstance().getCurrentStage())
+    # IEvent.sendEvent(GameEvent.ChangeState, nextState=GameStateType.StagePlay)
+    # IEvent.sendEvent(GameEvent.StageInitComplete, stage=StageManager.getInstance().getCurrentStage())
         
 
     running = True
